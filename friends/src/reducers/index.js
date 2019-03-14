@@ -3,13 +3,16 @@ import {
     GET_FRIENDS_START,
     GET_FRIENDS_SUCCESS,
     GET_FRIENDS_FAILURE,
+    ADD_FRIEND_SUCCESS,
+    ADD_FRIEND_FAILURE
 } from '../actions';
 
 const initialState = {
     friends: [],
     error: null,
     loggingIn: false,
-    fetchingFriends: false
+    fetchingFriends: false,
+    addingFriend: false
 };
 
 const reducer = (state = initialState, action) => {
@@ -40,6 +43,21 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 error: '',
                 fetchingFriends: false
+            }
+        }
+        case ADD_FRIEND_SUCCESS: {
+            return {
+                ...state,
+                error: '',
+                addingFriend: true,
+                friends: action.payload
+            }
+        }
+        case ADD_FRIEND_FAILURE: {
+            return {
+                ...state,
+                error: '',
+                addingFriend: false
             }
         }
         default:

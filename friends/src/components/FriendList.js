@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { getFriends } from '../actions';
+import { addFriend } from '../actions';
 
 class FriendList extends React.Component {
 state = {
@@ -21,6 +22,12 @@ state = {
             [e.target.name]: e.target.value
     });
 };
+
+    addFriend = (e)=> {
+    e.preventDefault();
+    this.props.addFriend(this.state);
+    this.setState({ name: '', age: '', email: '' })
+    }
 
     render() {
         return (
@@ -65,5 +72,5 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps,
-    { getFriends }
+    { getFriends, addFriend }
 )(FriendList);
