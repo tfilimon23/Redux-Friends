@@ -34,7 +34,7 @@ state = {
             <div>
             <h3>Welcome to the club!</h3>
             {this.props.friends.map(friend=>(
-                <h5>{friend.name}</h5>
+                <h5 key={friend.id}>{friend.name}</h5>
             ))}
             <form onSubmit ={this.addFriend}>
             <input
